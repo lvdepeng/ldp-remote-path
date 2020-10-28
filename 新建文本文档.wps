@@ -1,0 +1,18 @@
+
+稳定                                              性能
+activeMq --》rabbitMq -->>RockerMq
+destinationPolicy 目的策略
+
+
+ PendingMessageLimitStrategy 
+   1 ConstantPendingMessageLimitStrategy 持久化消息限制策略  可以针对queue，队列数量不大的情况下
+   <constantPendingMessageLimitStrategy limit="50"/>---》超过50条，其他的将要丢弃
+   2 PrefetchRatePendingMessageLimitStrategy 随着消费者的增加，容量不断扩大，适合于topic
+   <prefetchRatePendingMessageLimitStrategy multiplier="2.5"/>---》消费者*2.5 ，超过其将要被丢弃
+
+   值为-1时表示禁止丢弃任何消息
+
+
+
+
+
